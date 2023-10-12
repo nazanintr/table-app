@@ -76,7 +76,7 @@ const App = () => {
   const getSelectedRows = () => {
     return selectedRows;
   };
-  
+
   /* Reviewer Note:
     Determine the columns to be displayed based on data structure
   */
@@ -95,8 +95,14 @@ const App = () => {
           useMockData={useMockData}
           currentPage={page}
           columns={columns}
-          /* Reviewer Nore: custom Table header element*/
-          customHeader={<h2>Custom Table Header</h2>}
+          /* Reviewer Note: 
+            Users have the flexibility to pass custom headers or customize the columns. 
+            The 'customHeader' prop can be used to define a custom table header. 
+            The 'customColumnHeaders' prop allows users to specify their own column headers,
+            which will replace the columns of data provided from the API or mock data. 
+          */
+          // customHeader={<h2>Custom Table Header</h2>}
+          customColumnHeaders={columns}
           pagination={true}
           itemsPerPage={itemsPerPage}
           totalEntries={totalEntries}
@@ -107,7 +113,7 @@ const App = () => {
           onPreviousPage={handlePreviousPage}
         />
       ) : (
-        <p data-testid='no-data-message'>No data available.</p>
+        <p data-testid="no-data-message">No data available.</p>
       )}
     </div>
   );

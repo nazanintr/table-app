@@ -58,11 +58,17 @@ const Table = <T extends object>({
       <table className="table">
         <thead>
           <tr>
+            {/* 
+            Reviewer Note: 
+            If a custom header is provided, the default column headers disappear. 
+            Conversely, if custom columns are provided, the custom header is not displayed. 
+            Users can choose between these options to tailor the table to their needs. 
+          */}
             {customHeader ? (
               <th colSpan={columns.length + 1}>{customHeader}</th>
             ) : (
               <>
-                <th></th>
+                {selectingMode ? <th></th> : null}
                 {customColumnHeaders
                   ? customColumnHeaders.map((header, index) => (
                       <th key={index}>{header}</th>
